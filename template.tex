@@ -1,0 +1,184 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[$fontsize$, a4paper]{article}
+
+% LAYOUT
+%--------------------------------
+% Margins
+\usepackage{geometry} 
+\geometry{$geometry$}
+
+% Do not indent paragraphs
+\setlength\parindent{0in}
+
+% Enable multicolumns
+\usepackage{multicol}
+\setlength{\columnsep}{-3.5cm}
+
+% Uncomment to suppress page numbers
+% \pagenumbering{gobble}
+
+% LANGUAGE
+%--------------------------------
+% Set the main language
+$if(lang)$
+\usepackage[english]{babel}
+\usepackage{polyglossia}
+% \setmainlanguage{$lang$}
+\setdefaultlanguage{english}
+$endif$
+
+\usepackage[english]{babel}
+\setdefaultlanguage{english}
+\usepackage{polyglossia}
+
+% TYPOGRAPHY
+%--------------------------------
+\usepackage{fontspec} 
+\usepackage{xunicode}
+\usepackage{xltxtra}
+% converts LaTeX specials (quotes, dashes etc.) to Unicode
+\defaultfontfeatures{Mapping=tex-text}
+\setromanfont [Ligatures={Common}, Numbers={OldStyle}]{$mainfont$}
+% Cool ampersand
+\newcommand{\amper}{{\fontspec[Scale=.95]{$mainfont$}\selectfont\itshape\&}}
+
+% MARGIN NOTES
+%--------------------------------
+\usepackage{marginnote}
+\newcommand{\note}[1]{\marginnote{\scriptsize #1}}
+\renewcommand*{\raggedleftmarginnote}{}
+\setlength{\marginparsep}{7pt}
+\reversemarginpar
+
+% HEADINGS
+%--------------------------------
+\usepackage{sectsty} 
+\usepackage[normalem]{ulem} 
+\sectionfont{\rmfamily\mdseries} 
+\subsectionfont{\rmfamily\mdseries\scshape\normalsize} 
+\subsubsectionfont{\rmfamily\bfseries\upshape\normalsize} 
+
+% ITEMS
+%--------------------------------
+\usepackage{enumitem}
+
+% PDF SETUP
+%--------------------------------
+\usepackage{hyperref}
+\hypersetup
+{
+  pdfauthor={$name$},
+  pdfsubject={$name$'s CV},
+  pdftitle={$name$'s CV},
+  colorlinks, breaklinks, xetex, bookmarks,
+  filecolor=black,
+  urlcolor=[rgb]{0.117,0.682,0.858},
+  linkcolor=[rgb]{0.117,0.682,0.858},
+  linkcolor=[rgb]{0.117,0.682,0.858},
+  citecolor=[rgb]{0.117,0.682,0.858}
+}
+
+% DOCUMENT
+%--------------------------------
+\begin{document}
+
+{\LARGE $name$}\\[.2cm]
+
+$if(urls)$
+\begin{multicols}{2}
+$endif$
+
+$for(address)$
+$address$\\
+$endfor$
+
+\vspace{-10pt}
+
+$phone$\\
+\href{mailto:$email$}{$email$}\\
+
+
+$if(urls)$
+\columnbreak
+
+$for(urls)$
+\href{http://$urls$}{$urls$}\\
+$endfor$
+\end{multicols}
+$endif$
+
+\vspace{24pt}
+
+$if(intro)$
+$intro$
+$endif$
+
+\subsection*{Areas of Interest}
+$if(skills)$
+\begin{itemize}
+    \setlength\itemsep{0.1em}
+    $for(skills)$
+      \item $skills$
+    $endfor$
+\end{itemize}
+$endif$
+% \vfill
+
+\vspace{6pt}
+
+\section*{Experience}
+\noindent
+$for(experience)$
+\normalsize
+\note{$experience.years$}\textsc{$experience.employer$} - $experience.project$\\
+\note{$experience.city$, $experience.country$}\textsc{$experience.job$}\\
+
+\textsl{$experience.description$}
+$if(experience.tasks)$
+\begin{itemize}
+    \setlength\itemsep{0.05em}
+    $for(experience.tasks)$
+      \item $experience.tasks$
+    $endfor$
+\end{itemize}
+$endif$
+$if(experience.stack)$
+\footnotesize\textsc{$experience.stack$}
+\newline
+$endif$
+
+$endfor$
+
+$if(education)$
+\section*{Education}
+\noindent
+$for(education)$
+\note{$education.city$, $education.country$}\textbf{$education.subject$}$if(education.degree)$, $education.degree$$endif$\\
+\emph{$education.institute$}\\[.2cm]
+$endfor$
+$endif$
+
+$if(certifications)$
+\section*{Certifications}
+\noindent
+$for(certifications)$
+\note{$certifications.year$}\textbf{$certifications.subject$}$if(certifications.degree)$, $certifications.degree$$endif$\\
+\emph{$certifications.institute$}\\[.2cm]
+$endfor$
+$endif$
+
+$if(languages)$
+\newlist{customitemize}{itemize}{1}
+\setlist[customitemize]{label={},leftmargin=0pt,itemsep=0pt,topsep=0pt,partopsep=0pt,parsep=0pt}
+\section*{Languages}
+\begin{customitemize}
+    \setlength\itemsep{0.05em}
+    $for(languages)$
+  \item \textbf{$languages.language$}: $languages.proficiency$
+    $endfor$
+\end{customitemize}
+$endif$
+
+\end{document}

@@ -1,0 +1,81 @@
+---
+# Personal details
+name: Guadalupe Krywoszyja
+address:
+- Krzelów 135B
+- 56-160 Krzelów
+- Wińsko
+phone: "+48 000 000 000"
+email: me@adrianpk.com
+# Insert URLs without http://
+urls:
+- https://github.com/guada
+- https://www.linkedin.com/in/guada
+
+# Sections
+
+intro: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus Page"
+
+skills:
+- Skill 1
+- Skill 2
+- Skill 3
+
+experience:
+- years: 2022--Present
+  employer: Employer
+  job: Co-Owner
+  project: Project Name
+  city: Wroclaw
+  country: Argentine
+  description: "Lorem Ipsum"
+  tasks: 
+    - Supervision.
+    - Work.
+  stack: "Excell | PM | Something"
+
+- years: 2020--2022
+  employer: Employer
+  job: Co-Owner
+  project: Project Name
+  city: Wroclaw
+  country: Argentine
+  description: "Lorem Ipsum"
+  tasks: 
+    - Supervision.
+    - Work.
+  stack: "Excell | PM | Something"
+
+
+education:
+- year: 2010--2018
+  subject: Biology
+  institute: UBA
+  city: Buenos Aires
+  country: Argentina
+
+- year: 2002--2010
+  subject: Chemistry
+  institute: ORT
+  city: Buenos Aires
+  country: Argentina
+
+certifications:
+- year: 2019
+  subject: Something
+  institute: Somewhere
+  city: City
+  country: Argentine
+
+languages:
+  - language: English
+    proficiency: C1
+  - language: Spanish
+    proficiency: native
+
+# Settings
+mainfont: Noto Serif
+fontsize: 10pt
+lang: English
+geometry: a4paper, left=35mm, right=35mm, top=51mm, bottom=17mm
+---
